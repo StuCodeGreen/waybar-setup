@@ -1,0 +1,102 @@
+{
+  "modules-left": [
+    "custom/logo",
+    "sway/workspaces",
+    "temperature",
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "memory",
+    "cpu",
+    "network",
+    "battery"
+//    "tray"
+  ],
+  "custom/logo": {
+    "format": "\uf303 {}",
+    "exec": "whoami",
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon} {volume}%", 
+    "format-muted": "\ueee8 {volume}%",
+    "format-icons": {
+      "default": ["\uf026", "\uf027", "\uf028"]
+    },
+   // "states": {
+    //  "warning": 0,
+    //},
+    "scroll-step": 1,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "tooltip": false,
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82"],
+    "format-full": "\udb80\udc7a {capacity}%",
+    "format-charging": "\udb80\udc84 {capacity}%",
+    "tooltip": false
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%I:%M %p  %A %b %d}",
+    "tooltip": true,
+    "tooltip-format": "<tt>{calendar}</tt>",
+  },
+  "memory": {
+    "interval": 1,
+    "format": "\uefc5 {percentage}%",
+    "states": {
+      "warning": 85,
+    },
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "\uf4bc {usage}%"
+  },
+  "mpd": {
+    "max-length": 25,
+    "format": "<span foreground='#bb9af7'></span> {title}",
+    "format-paused": " {title}",
+    "format-stopped":"<span foreground='#bb9af7'></span>",
+    "format-disconnected": "",
+    "on-click": "mpc --quiet toggle",
+    "on-click-right": "mpc ls | mpc add",
+    "on-click-middle": "kitty ncmpcpp",
+    "on-scroll-up": "mpc --quiet prev",
+    "on-scroll-down": "mpc --quiet next",
+    "smooth-scrolling-threshold":5,
+    "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
+  },
+  "network": {
+    "interval": 1,
+    "format-wifi": "\uf1eb {essid}",
+    "format-ethernet": "\uef44 {ifname} ({ipaddr})",
+    "format-linked": "\uf1eb {essid} (No IP)",
+    "format-disconnected": "\uf1eb Disconnected",
+    "tooltip": false
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/thermal/thermal_zone7/temp",
+    //"critical-threshold": 80,
+    "tooltip": false,
+    "format": "\uf2c9 {temperatureC}°C"
+  },
+//  "tray": {
+//    "icon-size": 15,
+//    "spacing": 5
+//  },
+}
