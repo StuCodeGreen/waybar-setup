@@ -76,8 +76,7 @@ tooltip label {
   color: rgb(245, 194, 231);
 }
 #clock {
- // color: rgb(217, 224, 238);
-  color:red;
+ color: rgb(217, 224, 238);
 }
 #idle_inhibitor {
   color: rgb(221, 182, 242);
