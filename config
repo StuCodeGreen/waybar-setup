@@ -56,8 +56,8 @@
   "battery": {
     "interval": 10,
     "states": {
-      "warning": 30,
-      "critical": 10
+      "warning": 15,
+      "critical": 5
     },
     "format": "{icon} {capacity}%",
     "format-icons": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82"],
