@@ -2,17 +2,20 @@
   "modules-left": [
     "custom/logo",
     "sway/workspaces",
-    "temperature",
+    "sway/scratchpad",
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
     "pulseaudio",
+    "backlight",
     "memory",
     "cpu",
+    "temperature",
     "network",
-    "battery"
+    "battery",
+    "idle_inhibitor"
 //    "tray"
   ],
   "custom/logo": {
@@ -22,33 +25,53 @@
   "sway/workspaces": {
     "disable-scroll": true,
   },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
   "pulseaudio": {
     "scroll-step": 1,
     "format": "{icon} {volume}%", 
+    "format-bluetooth": "{volume}% {icon} {format_source}",   
     "format-muted": "\ueee8 {volume}%",
+    "format-source-muted": "",
     "format-icons": {
-      "default": ["\uf026", "\uf027", "\uf028"]
+      "default": ["\uf026", "\uf027", "\uf028"],
+      "headphone": "",
     },
    // "states": {
     //  "warning": 0,
     //},
     "scroll-step": 1,
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
     "tooltip": false,
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
   },
   "battery": {
     "interval": 10,
     "states": {
-      "warning": 20,
+      "warning": 30,
       "critical": 10
     },
     "format": "{icon} {capacity}%",
     "format-icons": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82"],
     "format-full": "\udb80\udc7a {capacity}%",
     "format-charging": "\udb80\udc84 {capacity}%",
-    "tooltip": false
+    "format-alt": "{time} {icon}",
+    "tooltip":false
+  },
+  "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+          "activated": "",
+          "deactivated": ""
+      }
   },
   "clock": {
     "interval": 1,
@@ -58,14 +81,15 @@
   },
   "memory": {
     "interval": 1,
-    "format": "\uefc5 {percentage}%",
+    "format": " {percentage}%",
     "states": {
       "warning": 85,
     },
   },
   "cpu": {
     "interval": 1,
-    "format": "\uf4bc {usage}%"
+    "format": "\uf4bc {usage}%",
+    "tooltip": false
   },
   "mpd": {
     "max-length": 25,
@@ -82,21 +106,22 @@
     "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
   },
   "network": {
-    "interval": 1,
-    "format-wifi": "\uf1eb {essid}",
-    "format-ethernet": "\uef44 {ifname} ({ipaddr})",
-    "format-linked": "\uf1eb {essid} (No IP)",
-    "format-disconnected": "\uf1eb Disconnected",
-    "tooltip": false
-  },
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
   "temperature": {
-    "hwmon-path": "/sys/class/thermal/thermal_zone7/temp",
+   // "hwmon-path": "/sys/class/thermal/thermal_zone7/temp",
     //"critical-threshold": 80,
     "tooltip": false,
     "format": "\uf2c9 {temperatureC}°C"
   },
-//  "tray": {
-//    "icon-size": 15,
-//    "spacing": 5
-//  },
+  "tray": {
+    "icon-size": 15,
+    "spacing": 5
+  },
 }
