@@ -15,7 +15,8 @@
     "temperature",
     "network",
     "battery",
-    "idle_inhibitor"
+    "idle_inhibitor",
+    "bluetooth"
 //    "tray"
   ],
   "custom/logo": {
@@ -119,6 +120,14 @@
     //"critical-threshold": 80,
     "tooltip": false,
     "format": "\uf2c9 {temperatureC}°C"
+  },
+  "bluetooth": {
+    "format": "{status} {device_alias}",
+    "format-disabled": " Off",
+    "format-connected": " {device_alias}",
+    "format-disconnected": " No Devices",
+    "on-click": "bluetoothctl power on",
+    "on-click-right": "bluetoothctl power off"
   },
   "tray": {
     "icon-size": 15,
