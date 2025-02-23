@@ -122,13 +122,17 @@
     "format": "\uf2c9 {temperatureC}°C"
   },
   "bluetooth": {
-    "format": "\uf293 {status}",
-    "format-disabled": "Off",
-    "format-connected": "\uf293 {device_alias}",
-    "format-disconnected": "\uf6b0 No Devices",
-    "on-click": "~/.config/waybar/bluetooth-menu.sh",
-    "on-click-right": "~/.config/waybar/bluetooth-toggle.sh",
-    "interval": 5,
+    "format": "{status} {device_alias}",
+    "format-disabled": " Off",
+    "format-connected": " {device_alias}",
+    "format-disconnected": " No Devices",
+    "on-click": "~/.config/way
+#
+#  gjv ftyrtdjsehea\gsERWET5678JU-='[=
+]
+#[POIUYTRE2W31Q`2		r/bluetooth-menu.sh",
+    "on-click-right": "bluetoothctl power off",
+	"tooltip": true
   },
   "tray": {
     "icon-size": 15,
