@@ -3,6 +3,7 @@
     "custom/logo",
     "sway/workspaces",
     "sway/scratchpad",
+    "bluetooth"
   ],
   "modules-center": [
     "clock"
@@ -16,8 +17,8 @@
     "network",
     "battery",
     "idle_inhibitor",
-    "bluetooth"
-//    "tray"
+    //"bluetooth"
+    "tray"
   ],
   "custom/logo": {
     "format": "\uf303 {}",
@@ -107,13 +108,12 @@
     "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
   },
   "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": "  {essid:.8}",
         "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format": "{essid} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "on-click":  "alacritty -t nmtui -e nmtui"
     },
   "temperature": {
    // "hwmon-path": "/sys/class/thermal/thermal_zone7/temp",
